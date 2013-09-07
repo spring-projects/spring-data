@@ -1,0 +1,90 @@
+---
+---
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+{% capture billboard_description %}
+Makes it easy to use new data access technologies, such as non-relational databases, map-reduce frameworks, and cloud based data services. Spring Data also provides improved support for relational database technologies. This is an umbrella project which contains many subprojects that are specific to a given database. The projects are developed by working together with many of the companies and developers that are behind these exciting technologies.
+{% endcapture %}
+
+{% capture main_content %}
+
+## Main Projects
+
+<!-- Spring Data JPA -->
+{% capture project_description %}
+Makes it easy to implement JPA-based repositories.
+{% endcapture %}
+
+{% include project_block.md site_url="/spring-data-jpa" repo_url="http://github.com/spring-projects/spring-data-jpa" project_title="Spring Data JPA" project_description=project_description %}
+
+<!-- Spring Data MongoDB -->
+{% capture project_description %}
+Spring based, object-document support and repositories for MongoDB.
+{% endcapture %}
+
+{% include project_block.md site_url="/spring-data-mongodb" repo_url="http://github.com/spring-projects/spring-data-mongodb" project_title="Spring Data MongoDB" project_description=project_description %}
+
+<!-- Spring Data Neo4j -->
+{% capture project_description %}
+Spring based, object-graph support and repositories for Neo4j.
+{% endcapture %}
+
+{% include project_block.md site_url="/spring-data-neo4j" repo_url="http://github.com/spring-projects/spring-data-neo4j" project_title="Spring Data Neo4j" project_description=project_description %}
+
+<!-- Spring Data Redis -->
+{% capture project_description %}
+Provides easy configuration and access to Redis from Spring applications.
+{% endcapture %}
+
+{% include project_block.md site_url="/spring-data-redis" repo_url="http://github.com/spring-projects/spring-data-redis" project_title="Spring Data Redis" project_description=project_description %}
+
+<!-- Spring For Hadoop -->
+{% capture project_description %}
+Simplifies Apache Hadoop by providing a unified configuration model and easy to use APIs for using HDFS, MapReduce, Pig, and Hive.
+{% endcapture %}
+
+{% include project_block.md site_url="/spring-hadoop" repo_url="http://github.com/spring-projects/spring-hadoop" project_title="Spring for Hadoop" project_description=project_description %}
+
+<!--Spring Data GemFire -->
+{% capture project_description %}
+Provides easy configuration and access to GemFire from Spring applications.
+{% endcapture %}
+{% include project_block.md site_url="/spring-data-gemfire" repo_url="http://github.com/spring-projects/spring-data-gemfire" project_title="Spring Data GemFire" project_description=project_description %}
+
+<!--Spring Data JDBC Extensions -->
+{% capture project_description %}
+Provides extensions to the JDBC support provided in the Spring Framework.
+{% endcapture %}
+{% include project_block.md site_url="/spring-data-jdbc-ext" repo_url="http://github.com/spring-projects/spring-data-jdbc-ext" project_title="Spring Data JDBC Extensions" project_description=project_description %}
+
+<div style="padding-bottom: 40px;">
+</div>
+
+## Community Projects
+
+<!--Spring Data Solr -->
+{% capture project_description %}
+Spring Data module for Apache Solr.
+{% endcapture %}
+{% include project_block.md site_url="https://github.com/SpringSource/spring-data-solr" repo_url="https://github.com/SpringSource/spring-data-solr" project_title="Spring Data Solr" project_description=project_description %}
+
+<!--Spring Data Couchbase -->
+{% capture project_description %}
+Spring Data module for Couchbase.
+{% endcapture %}
+{% include project_block.md site_url="https://github.com/SpringSource/spring-data-couchbase" repo_url="https://github.com/SpringSource/spring-data-couchbase" project_title="Spring Data Couchbase" project_description=project_description %}
+
+<!--Spring Data Elasticsearch -->
+{% capture project_description %}
+Spring Data module for Elasticsearch.
+{% endcapture %}
+{% include project_block.md site_url="https://github.com/SpringSource/spring-data-elasticsearch" repo_url="https://github.com/SpringSource/spring-data-elasticsearch" project_title="Spring Data Elasticsearch" project_description=project_description %}
+
+<!-- end main_content -->
+{% endcapture %}
+
+{% include project_group_page.html %}
+
+</html>
