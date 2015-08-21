@@ -1,4 +1,18 @@
 ---
+title: Spring Data
+
+badges:
+
+
+  # Customize your project's badges. Delete any entries that do not apply.
+  custom:
+    - name: Source (GitHub)
+      url:  https://github.com/spring-projects/spring-data
+      icon: github
+
+    - name: StackOverflow
+      url:  http://stackoverflow.com/questions/tagged/spring-data
+      icon: stackoverflow
 ---
 <!DOCTYPE HTML>
 <html lang="en-US">
@@ -10,6 +24,75 @@ Makes it easy to use new data access technologies, such as non-relational databa
 
 {% capture main_content %}
 
+Spring Data provides a simple way to write the lowest level, boiler plate operations you have always written with ease. No need to implement the same handful of operations as you embark on a new project. Instead, focus on the domain model of your business and have basic persistence APIs ready to go. When it's time to write the complex data warehouse report that involves joining a dozen different bits of data, go into your datastore's specific APIs to leverage them as needed. You also inherit best practices for repository-based solutions. Additionally, export your repositories with a full blown hypermedia-driven API by adding a single dependency.
+
+## Features
+
+* Rapid creation of persistence functionality (change, read, update, delete)
+* Datastore-neutral approach
+* Declarative way of defining operations
+* Easy access to datastore-specific APIs (JpaTemplate, MongoTemplate, etc.)
+* Repository and datastore best practices
+
+For a quick taste, look at the following domain object:
+
+```java
+@Entity
+public class Employee {
+
+	private @Id @GeneratedValue Long id;
+	private String firstName;
+	private String lastName;
+	private String description;
+
+	private Employee() {}
+
+	public Employee(String firstName, String lastName, String description) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.description = description;
+	}
+}
+```
+
+This defines a simple JPA entity with a few fields. The following code shows a simple repository definition:
+
+```java
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+
+	Employee findByFirstName(String firstName);
+	List<Employee> findByLastName(String lastName);
+
+}
+```
+
+This interface extends Spring Data's `CrudRepository` and defines the type (`Employee`) and the id type (`Long`).
+
+Put this code inside a Spring Boot application with `spring-boot-starter-data-jpa` like this:
+
+```java
+@SpringBootApplication
+public class MyApp {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MyApp.class, args);
+	}
+}
+```
+
+Launch your app and Spring Data (having been autoconfigured by Boot, [SQL](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-sql) or [NoSQL](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-nosql)) will automatically craft a concrete set of operations:
+
+* `save(Employee)`
+* `delete(Employee)`
+* `find(Employee)`
+* `find(Long)`
+* `findAll()`
+
+On top of the CRUD operations inherited from `CrudRepository`, the two interface methods define **finders**.
+
+* `findByFirstName` automatically writes a JPA query based on firstName and only return the first employee found.
+* `findByLastName` automatically writes a JPA query based on lastName and returns a collection.
+
 <a name="main-projects"></a>
 
 ## Main Projects
@@ -19,59 +102,86 @@ Makes it easy to use new data access technologies, such as non-relational databa
 Makes it easy to implement JPA-based repositories.
 {% endcapture %}
 
-{% include project_block.md site_url="/spring-data-jpa" repo_url="http://github.com/spring-projects/spring-data-jpa" project_title="Spring Data JPA" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-jpa" repo_url="http://github.com/spring-projects/spring-data-jpa" project_title="Spring Data JPA" project_description=project_description %}
 
 <!-- Spring Data MongoDB -->
 {% capture project_description %}
 Spring based, object-document support and repositories for MongoDB.
 {% endcapture %}
 
-{% include project_block.md site_url="/spring-data-mongodb" repo_url="http://github.com/spring-projects/spring-data-mongodb" project_title="Spring Data MongoDB" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-mongodb" repo_url="http://github.com/spring-projects/spring-data-mongodb" project_title="Spring Data MongoDB" project_description=project_description %}
 
 <!-- Spring Data Neo4j -->
 {% capture project_description %}
 Spring based, object-graph support and repositories for Neo4j.
 {% endcapture %}
 
-{% include project_block.md site_url="/spring-data-neo4j" repo_url="http://github.com/spring-projects/spring-data-neo4j" project_title="Spring Data Neo4j" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-neo4j" repo_url="http://github.com/spring-projects/spring-data-neo4j" project_title="Spring Data Neo4j" project_description=project_description %}
 
 <!-- Spring Data Redis -->
 {% capture project_description %}
 Provides easy configuration and access to Redis from Spring applications.
 {% endcapture %}
 
-{% include project_block.md site_url="/spring-data-redis" repo_url="http://github.com/spring-projects/spring-data-redis" project_title="Spring Data Redis" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-redis" repo_url="http://github.com/spring-projects/spring-data-redis" project_title="Spring Data Redis" project_description=project_description %}
 
 <!--Spring Data Solr -->
 {% capture project_description %}
 Spring Data module for Apache Solr.
 {% endcapture %}
-{% include project_block.md site_url="https://github.com/spring-projects/spring-data-solr" repo_url="https://github.com/spring-projects/spring-data-solr" project_title="Spring Data Solr" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-solr" repo_url="https://github.com/spring-projects/spring-data-solr" project_title="Spring Data Solr" project_description=project_description %}
 
 <!-- Spring For Hadoop -->
 {% capture project_description %}
 Simplifies Apache Hadoop by providing a unified configuration model and easy to use APIs for using HDFS, MapReduce, Pig, and Hive.
 {% endcapture %}
 
-{% include project_block.md site_url="/spring-hadoop" repo_url="http://github.com/spring-projects/spring-hadoop" project_title="Spring for Hadoop" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-hadoop" repo_url="http://github.com/spring-projects/spring-hadoop" project_title="Spring for Hadoop" project_description=project_description %}
 
 <!--Spring Data GemFire -->
 {% capture project_description %}
 Provides easy configuration and access to GemFire from Spring applications.
 {% endcapture %}
-{% include project_block.md site_url="/spring-data-gemfire" repo_url="http://github.com/spring-projects/spring-data-gemfire" project_title="Spring Data GemFire" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-gemfire" repo_url="http://github.com/spring-projects/spring-data-gemfire" project_title="Spring Data GemFire" project_description=project_description %}
 
 <!--Spring Data REST -->
 {% capture project_description %}
 Exports Spring Data repositories as hypermedia-driven RESTful resources.
 {% endcapture %}
-{% include project_block.md site_url="/spring-data-rest" repo_url="http://github.com/spring-projects/spring-data-rest" project_title="Spring Data REST" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-rest" repo_url="http://github.com/spring-projects/spring-data-rest" project_title="Spring Data REST" project_description=project_description %}
 
 <!--Spring Data JDBC Extensions -->
 {% capture project_description %}
 Provides extensions to the JDBC support provided in the Spring Framework.
 {% endcapture %}
-{% include project_block.md site_url="/spring-data-jdbc-ext" repo_url="http://github.com/spring-projects/spring-data-jdbc-ext" project_title="Spring Data JDBC Extensions" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-jdbc-ext" repo_url="http://github.com/spring-projects/spring-data-jdbc-ext" project_title="Spring Data JDBC Extensions" project_description=project_description %}
+
+<span id="quick-start"></span>
+## Quick Start
+
+{% include download_widget.md %}
+
+
+## Release Trains
+
+Spring Data is an umbrella project consisting of independent projects with, in principle, different release cadences. To manage the protfolio, a BOM (Bill of Materials) is published with a curated set of dependencies on the individual project. The release trains have names, not versions, to avoid confusion with the sub-projects. The names are an alphabetic sequence (so you can sort them chronologically) with names of famous computer scientists and software developers. When point releases of the individual projects accumulate to a critical mass, or if there is a critical bug in one of them that needs to be available to everyone, the release train will push out "service releases" with names ending ".SRX", where "X" is a number.
+
+If you are using Spring Boot, you will inherit predefined versions for each project. To plugin a newer or older release train, use the BOM information shown above to adjust the version number.
+
+The following projects have Spring Boot starters:
+
+* org.springframework.boot:spring-boot-starter-data-jpa
+* org.springframework.boot:spring-boot-starter-data-mongodb
+* org.springframework.boot:spring-boot-starter-data-neo4j
+* org.springframework.boot:spring-boot-starter-data-redis
+* org.springframework.boot:spring-boot-starter-data-solr
+* org.springframework.boot:spring-boot-starter-data-gemfire
+* org.springframework.boot:spring-boot-starter-data-rest
+
+The following projects will inherit versioning as well:
+
+* org.springframework.data:spring-data-hadoop
+* org.springframework.data:spring-data-oracle
 
 <div style="padding-bottom: 20px;"></div>
 <a name="community-projects"></a>
@@ -82,7 +192,7 @@ Provides extensions to the JDBC support provided in the Spring Framework.
 {% capture project_description %}
 Spring Data module for Couchbase.
 {% endcapture %}
-{% include project_block.md site_url="/spring-data-couchbase" repo_url="https://github.com/spring-projects/spring-data-couchbase" project_title="Spring Data Couchbase" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-couchbase" repo_url="https://github.com/spring-projects/spring-data-couchbase" project_title="Spring Data Couchbase" project_description=project_description %}
 
 <!--Spring Data Elasticsearch -->
 {% capture project_description %}
@@ -94,7 +204,7 @@ Spring Data module for Elasticsearch.
 {% capture project_description %}
 Spring Data module for Cassandra.
 {% endcapture %}
-{% include project_block.md site_url="/spring-data-cassandra" repo_url="https://github.com/spring-projects/spring-data-cassandra" project_title="Spring Data Cassandra" project_description=project_description %}
+{% include project_block.md site_url="http://projects.spring.io/spring-data-cassandra" repo_url="https://github.com/spring-projects/spring-data-cassandra" project_title="Spring Data Cassandra" project_description=project_description %}
 
 <!--Spring Data DynamoDB -->
 {% capture project_description %}
@@ -105,6 +215,10 @@ Spring Data module for DynamoDB.
 <!-- end main_content -->
 {% endcapture %}
 
-{% include project_group_page.html %}
+{% capture related_resources %}
+{% endcapture %}
+
+
+{% include project_page.html %}
 
 </html>
