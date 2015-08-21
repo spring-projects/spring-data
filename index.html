@@ -28,11 +28,13 @@ Spring Data provides a simple way to write the lowest level, boiler plate operat
 
 ## Features
 
-* Rapid creation of persistence functionality (change, read, update, delete)
-* Datastore-neutral approach
-* Declarative way of defining operations
-* Easy access to datastore-specific APIs (JpaTemplate, MongoTemplate, etc.)
-* Repository and datastore best practices
+* Powerful Repository and custom object-mapping abstractions
+* Support for cross-store persistence
+* Dynamic query generation from query method names
+* Implementation domain base classes providing basic properties
+* Support for transparent auditing (created, last changed)
+* Possibility to integrate custom repository code
+* Easy Spring integration with custom namespace
 
 For a quick taste, look at the following domain object:
 
@@ -96,6 +98,13 @@ On top of the CRUD operations inherited from `CrudRepository`, the two interface
 <a name="main-projects"></a>
 
 ## Main Projects
+
+<!-- Spring Data Commons -->
+{% capture project_description %}
+Core Spring concepts underpinning every Spring Data project.
+{% endcapture %}
+
+{% include project_block.md site_url="http://docs.spring.io/spring-data/commons/docs/current/reference/html/" repo_url="http://github.com/spring-projects/spring-data-commons" project_title="Spring Data Commons" project_description=project_description %}
 
 <!-- Spring Data JPA -->
 {% capture project_description %}
@@ -216,6 +225,12 @@ Spring Data module for DynamoDB.
 {% endcapture %}
 
 {% capture related_resources %}
+
+* [Spring Data - Release Train BOM Example](https://github.com/spring-projects/spring-data-examples/tree/master/bom)
+* [Spring Data Examples](https://github.com/spring-projects/spring-data-examples)
+* [Spring Data Book](http://www.amazon.com/Spring-Data-Mark-Pollack/dp/1449323952)
+* [Getting Started Guides](https://spring.io/guides?filter=spring%20data)
+
 {% endcapture %}
 
 
