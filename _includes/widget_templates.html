@@ -5,25 +5,16 @@
             <div class="item--dropdown">
                 <div class="item--body">
                     <div class="item--body-title">
-                        <div class="item--left-column">Release</div>
-                        <div class="item--right-column">Documentation</div>
+                        <div>Release</div>
                     </div>
                     {@ _.each(releases, function(release) { @}
                     <div class="item--body--version">
-                        <div class="item--left-column">
-                            <p>{@= release.versionDisplayName @}</p>
+                        <div>
+                            <p><a href="#quick-start">{@= release.versionDisplayName @}</a></p>
                             {@ if(release.current) { @}
                                 <div class="spring-icon spring-icon-current-version"></div>
                             {@ } @}
                             <div class="spring-icon {@= release.statusIconClass() @}"></div>
-                        </div>
-                        <div class="item--right-column">
-                            {@ if (release.refDocUrl !== '') { @}
-                                <a href='{@= release.refDocUrl @}' class="docs-link reference-link">Reference</a>
-                            {@ }; @}
-                            {@ if (release.apiDocUrl !== '') { @}
-                                <a href='{@= release.apiDocUrl @}' class="docs-link api-link">API</a>
-                            {@ }; @}
                         </div>
                     </div>
                     {@ }); @}
