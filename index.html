@@ -36,6 +36,7 @@ It makes it easy to use data access technologies, relational and non-relational 
 
 
 <a name="main-modules"></a>
+
 ## Main modules
 
 <!-- Spring Data Commons -->
@@ -54,6 +55,7 @@ Core Spring concepts underpinning every Spring Data project.
 
 
 <a name="community-modules"></a>
+
 ## Community modules
 
 * [Spring Data Aerospike](https://github.com/spring-projects/spring-data-aerospike) - Spring Data module for Aerospike.
@@ -64,12 +66,14 @@ Core Spring concepts underpinning every Spring Data project.
 * [Spring Data Neo4j](http://projects.spring.io/spring-data-neo4j) - Spring based, object-graph support and repositories for Neo4j.
 
 <a name="related-modules"></a>
+
 ## Related modules
 
 * [Spring Data JDBC Extensions](http://projects.spring.io/spring-data-jdbc-ext) - Provides extensions to the JDBC support provided in the Spring Framework.
 * [Spring for Apache Hadoop](http://projects.spring.io/spring-hadoop) - Simplifies Apache Hadoop by providing a unified configuration model and easy to use APIs for using HDFS, MapReduce, Pig, and Hive.
 
 <a name="release-train"></a>
+
 ## Release train
 
 Spring Data is an umbrella project consisting of independent projects with, in principle, different release cadences. To manage the portfolio, a BOM (Bill of Materials - see this [example](https://github.com/spring-projects/spring-data-examples/tree/master/bom)) is published with a curated set of dependencies on the individual project. The release trains have names, not versions, to avoid confusion with the sub-projects.
@@ -91,6 +95,7 @@ Currently the release train contains the following modules:
 * Spring Data Elasticsearch (community module)
 
 <a name="quick-start"></a>
+
 ## Quick Start
 
 {% include download_widget.md %}
@@ -151,6 +156,7 @@ On top of the CRUD operations inherited from `CrudRepository`, the interface def
 * `findByLastName(…)` automatically writes a JPA query based on lastName and returns a collection.
 
 <a name="spring-boot-starters"></a>
+
 ## Spring Boot starters
 
 If you are using Spring Boot, you will inherit predefined versions for each project. To plugin a newer or older release train, configure the `spring-data-releasetrain.version` property to the release train iteration name you want to use.
