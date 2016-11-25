@@ -45,14 +45,16 @@ Core Spring concepts underpinning every Spring Data project.
 {% endcapture %}
 
 * [Spring Data Commons](http://docs.spring.io/spring-data/commons/docs/current/reference/html/) - Core Spring concepts underpinning every Spring Data project.
-* [Spring Data JPA](http://projects.spring.io/spring-data-jpa) - Makes it easy to implement JPA-based repositories.
-* [Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb) - Spring based, object-document support and repositories for MongoDB.
-* [Spring Data Redis](http://projects.spring.io/spring-data-redis) - Provides easy configuration and access to Redis from Spring applications.
-* [Spring Data for Apache Solr](http://projects.spring.io/spring-data-solr) - Spring Data module for Apache Solr.
 * [Spring Data Gemfire](http://projects.spring.io/spring-data-gemfire) - Provides easy configuration and access to GemFire from Spring applications.
-* [Spring Data for Apache Cassandra](http://projects.spring.io/spring-data-cassandra) - Spring Data module for Apache Cassandra.
+* [Spring Data JPA](http://projects.spring.io/spring-data-jpa) - Makes it easy to implement JPA-based repositories.
 * [Spring Data KeyValue](https://github.com/spring-projects/spring-data-keyvalue) - `Map`-based repositories and SPIs to easily build a Spring Data module for key-value stores.
+* [Spring Data LDAP](http://projects.spring.io/spring-data-ldap) - Provides Spring Data repository support for [Spring LDAP](https://github.com/spring-projects/spring-ldap).
+* [Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb) - Spring based, object-document support and repositories for MongoDB.
 * [Spring Data REST](http://projects.spring.io/spring-data-rest) - Exports Spring Data repositories as hypermedia-driven RESTful resources.
+* [Spring Data Redis](http://projects.spring.io/spring-data-redis) - Provides easy configuration and access to Redis from Spring applications.
+* [Spring Data for Apache Cassandra](http://projects.spring.io/spring-data-cassandra) - Spring Data module for Apache Cassandra.
+* [Spring Data for Apache Solr](http://projects.spring.io/spring-data-solr) - Spring Data module for Apache Solr.
+
 
 
 <a name="community-modules"></a>
@@ -84,16 +86,17 @@ Currently the release train contains the following modules:
 
 * Spring Data Commons
 * Spring Data JPA
-* Spring Data MongoDB
-* Spring Data Redis
 * Spring Data KeyValue
-* Spring Data for Apache Solr
+* Spring Data LDAP
+* Spring Data MongoDB
 * Spring Data Gemfire
-* Spring Data for Apache Cassandra
 * Spring Data REST
-* Spring Data Neo4j (community module)
+* Spring Data Redis
+* Spring Data for Apache Cassandra
+* Spring Data for Apache Solr
 * Spring Data Couchbase (community module)
 * Spring Data Elasticsearch (community module)
+* Spring Data Neo4j (community module)
 
 <a name="quick-start"></a>
 
@@ -107,16 +110,16 @@ For a quick taste, look at the following domain object:
 @Entity
 public class Employee {
 
-    private @Id @GeneratedValue Long id;
-    private String firstName, lastName, description;
+  private @Id @GeneratedValue Long id;
+  private String firstName, lastName, description;
 
-    private Employee() {}
+  private Employee() {}
 
-    public Employee(String firstName, String lastName, String description) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.description = description;
-    }
+  public Employee(String firstName, String lastName, String description) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.description = description;
+  }
 }
 ```
 
@@ -125,9 +128,9 @@ This defines a simple JPA entity with a few fields. The following code shows a s
 ```java
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
-    Employee findByFirstName(String firstName);
+  Employee findByFirstName(String firstName);
 
-    List<Employee> findByLastName(String lastName);
+  List<Employee> findByLastName(String lastName);
 }
 ```
 
@@ -137,9 +140,9 @@ This interface extends Spring Data's `CrudRepository` and defines the type (`Emp
 @SpringBootApplication
 public class MyApp {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MyApp.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(MyApp.class, args);
+  }
 }
 ```
 
